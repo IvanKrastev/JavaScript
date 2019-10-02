@@ -1,0 +1,56 @@
+public class DeltaZeroTempSort {
+    public static void main(String[] args) {
+        //int[] array = {-10, 7, 5, 3, -1, -9, -4}; Initial Data
+         int[] array = {0, 0, 0, 0, 0, 1, 1};
+        int counter = 0;
+        int deltaZero = array[0];
+        for (int i = 0; i< array.length; i++){
+            //Сравняване на най-близката до този момент стойност до 0 с текущият елемент от масива. Сравнението е по модул.
+            if (Math.abs(deltaZero -0) > Math.abs(Math.abs(array[i])-0) && (array[i] != 0)){
+                /*Ако единият елемент е положителен, другият отрицателен взимаме положителният елемент*/
+                if (deltaZero > 0 && array[i] < 0){
+                    deltaZero = deltaZero;
+                    /*Ако и двата елемента са по-големи от 0 взимаме този, който е по-близо до 0-та.*/
+                }else if (deltaZero > 0 && array[i] >0){
+                    deltaZero = array[i];
+                    counter = i;
+                }
+                /*Ако и двата елемента са по-малки от 0 взимаме този, който е по-близо до 0-та.*/
+                else if(deltaZero < 0 && array[i] < 0){
+                    deltaZero = deltaZero;
+                }
+                /* Ако първият член на масива е равен на 0. Взимаме стойността
+                на течущият член от итерацията. В противен сл. не изпълняваме условието
+                решението да е >0 и възможно най-близкото до 0.
+                 */
+            }else if(deltaZero == 0){
+                deltaZero = array[i];
+                counter = i; //Ако това присвояване работи на какво ми пречи? Ако не работи на какво ми пречи?
+            }else if(deltaZero < array[array.length-1]){
+                deltaZero = array[array.length-1];
+                counter = array.length-1;
+            }
+        }
+        System.out.println(deltaZero);
+        switch (counter){
+            case 0 :
+                System.out.println("Mo"); break;
+            case 1 :
+                System.out.println("Tu"); break;
+            case 2 :
+                System.out.println("We"); break;
+            case 3 :
+                System.out.println("Th"); break;
+            case 4 :
+                System.out.println("Fr");break;
+            case 5 :
+                System.out.println("Sa"); break;
+            case 6 :
+                System.out.println("Su"); break;
+                default:
+                    System.out.println("NOT VALID ARRAY INDEX!!!");
+        }
+
+    }
+}
+

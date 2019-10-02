@@ -1,0 +1,39 @@
+public class Condition1 {
+    public static void main(String[] args) {
+        //int[] array = {-10, 7, 5, 3, -1, -9, -4}; Начални стойности
+        int[] array = {1, 1, 1, -1, 0, 0, 0};
+        int counterPositive = -1;
+        int deltaPositive = Integer.MAX_VALUE;
+        int counterNegative = -1;
+        int deltaNegative = Integer.MAX_VALUE;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != 0){
+                if (Math.abs(array[i]) < Math.abs(deltaPositive)){
+                    if (array[i] > 0){
+                        deltaPositive = array[i];
+                        counterPositive = i;
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < array.length; i++){
+            if (array[i] != 0){
+                if (Math.abs(array[i]) < Math.abs(deltaNegative)){
+                    if (array[i] < 0){
+                        deltaNegative = array[i];
+                        counterNegative = i;
+                    }
+                }
+            }
+        }
+        if (counterPositive >= 0 || counterNegative >=0){
+            if (Math.abs(deltaPositive) <= Math.abs(deltaNegative)){
+                System.out.println("Number: " + array[counterPositive] + "\n" + "Index: " + counterPositive);
+            }else if(Math.abs(deltaPositive) > Math.abs(deltaNegative)){
+                System.out.println("Number: " + array[counterNegative] + "\n" + "Index: " + counterNegative);
+            }
+        }
+
+    }
+}
